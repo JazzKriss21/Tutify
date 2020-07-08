@@ -1,7 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate
-
 from accounts.models import Account
 
 
@@ -52,6 +51,8 @@ class AccountUpdateForm(forms.ModelForm):
         except Account.DoesNotExist:
             return username
         raise forms.ValidationError('Username "%s" is already in use.' % username)
+
+
 
 
 
