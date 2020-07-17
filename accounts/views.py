@@ -15,7 +15,10 @@ def registration_view(request):
             raw_password = form.cleaned_data.get('password1')
             account = authenticate(username=username, password=raw_password)
             login(request, account)
-            return redirect('home')
+            if form.cleaned_data.get('user_type')=='Student' or form.cleaned_data.get('user_type') =='student':
+                return redirect(reverse('profile_info:student-profile'))
+            else:
+                return redirect('home')
         else:
             context['registration_form'] = form
 
