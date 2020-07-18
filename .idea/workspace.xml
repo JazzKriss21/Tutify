@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="812f59f5-bcfd-48d1-837b-7f18d0bd5f4a" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/ase/dashboard/filters.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ase/dashboard/templates/dashboard/student_page_result.html" beforeDir="false" afterPath="$PROJECT_DIR$/ase/dashboard/templates/dashboard/student_page_result.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ase/dashboard/templates/dashboard/studentpage_afterlogin.html" beforeDir="false" afterPath="$PROJECT_DIR$/ase/dashboard/templates/dashboard/studentpage_afterlogin.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ase/dashboard/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/ase/dashboard/views.py" afterDir="false" />
