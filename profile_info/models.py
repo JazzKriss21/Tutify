@@ -25,10 +25,10 @@ def upload_location(instance, filename):
 
 
 class TutorProfile(models.Model):
-	account					= models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-	location  				= models.CharField(max_length = 50, blank=True)
-	subjects				= models.TextField(blank=True)
-	qualification			= models.CharField(max_length = 256, blank=True,)
+	key					= models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+	location  				= models.CharField(max_length = 50, blank=True,  null=True)
+	subjects				= models.TextField(blank=True, null=True)
+	qualification			= models.CharField(max_length = 256, blank=True, null=True)
 	bio 					= models.TextField(max_length=5000, null=True, blank=True)
 	gender 					= models.CharField(max_length=10, null=True, blank=True)
 	image		 			= models.ImageField(upload_to='profile_pics', null=True, blank=True)
@@ -39,7 +39,7 @@ class TutorProfile(models.Model):
 	slug 					= models.SlugField(null=True, blank=True, unique=True)
 
 	def __str__(self):
-		return self.account.username
+		return self.key.username
 
 @receiver(post_delete, sender=TutorProfile)
 def submission_delete(sender, instance, **kwargs):
@@ -47,7 +47,7 @@ def submission_delete(sender, instance, **kwargs):
 
 def pre_save_tutor_profile_receiver(sender, instance, *args, **kwargs):
 	if not instance.slug:
-		instance.slug = slugify(instance.account.username)
+		instance.slug = slugify(instance.key.username)
 
 pre_save.connect(pre_save_tutor_profile_receiver, sender=TutorProfile)
 
