@@ -26,14 +26,17 @@ def upload_location(instance, filename):
 
 class TutorProfile(models.Model):
 	account					= models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-	location  				= models.CharField(max_length = 50, blank=False)
-	subjects				= models.TextField(blank=False)
-	qualification			= models.CharField(max_length = 256, blank=False)
-	bio 					= models.TextField(max_length=5000, null=False, blank=False)
-	gender 					= models.CharField(max_length=10, null=False, blank=False)
-	image		 			= models.ImageField(upload_to=upload_location, null=True, blank=True)
+	location  				= models.CharField(max_length = 50, blank=True)
+	subjects				= models.TextField(blank=True)
+	qualification			= models.CharField(max_length = 256, blank=True,)
+	bio 					= models.TextField(max_length=5000, null=True, blank=True)
+	gender 					= models.CharField(max_length=10, null=True, blank=True)
+	image		 			= models.ImageField(upload_to='profile_pics', null=True, blank=True)
 	hourly_rate 			= models.IntegerField()
-	slug 					= models.SlugField(blank=True, unique=True)
+	availabilty 			= models.CharField(max_length=50, blank=True, default='Both')
+	proof 					= models.ImageField(upload_to='tutor_proof', null=True, blank=True)
+	verfied					= models.BooleanField(null=True, blank=True, default=False)
+	slug 					= models.SlugField(null=True, blank=True, unique=True)
 
 	def __str__(self):
 		return self.account.username
