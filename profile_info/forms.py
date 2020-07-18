@@ -21,6 +21,11 @@ class ProfileForm(ModelForm):
 		model=Profile
 		fields='__all__'
 
+class TutorProfileForm(ModelForm):
+	class Meta:
+		model=TutorProfile
+		fields='__all__'
+
 # class TutorProfileForm(forms.ModelForm):
 # 	class Meta:
 # 		model = TutorProfile

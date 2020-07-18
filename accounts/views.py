@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.http import HttpResponse
+from django.urls import reverse
 
 from accounts.forms import RegistrationForm, AccountAuthenticationForm, AccountUpdateForm
 
@@ -17,8 +18,8 @@ def registration_view(request):
             login(request, account)
             if form.cleaned_data.get('user_type')=='Student' or form.cleaned_data.get('user_type') =='student':
                 return redirect(reverse('profile_info:student-profile'))
-            else:
-                return redirect('home')
+            elif form.cleaned_data.get('user_type')=='Teacher' or form.cleaned_data.get('user_type') == 'teacher':
+                return redirect(reverse('profile_info:tutor-profile'))
         else:
             context['registration_form'] = form
 
