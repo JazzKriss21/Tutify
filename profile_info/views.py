@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Profile
+from .models import Profile, TutorProfile
 from .forms import UserUpdateForm,ProfileUpdateForm,TutorProfileForm
 from django.contrib.auth.decorators import login_required
 from accounts.models import Account
@@ -44,22 +44,28 @@ def tutor_profile(request):
 def profile_view(request,username):
 	user=Account.objects.get(username=username)
 	users=Profile.objects.all()
+	tutors=TutorProfile.objects.all()
 	current_user=request.user
-	if request.method == 'POST':
-	# # 	u_form=UserUpdateForm(request.POST,instance=request.user)
-		p_form=ProfileUpdateForm(request.POST,request.FILES,instance=user)
-		if  p_form.is_valid():
-			# u_form.save()
-			p_form.save()
-
-	else:
-	# # 	u_form=UserUpdateForm(instance=request.user)
-		p_form=ProfileUpdateForm(instance=user)
 	context={
-		# 'u_form':u_form,
-		'p_form':p_form,
+		'user':user,
 		'users':users,
+		'tutors':tutors,
 		'current_user':current_user
 	}
 	return render(request, 'profile_info/profile.html',context=context)
+
+def update_profile(request,username):
+	user=Account.objects.get(username=username)
+	form=ProfileForm(instance=user)
+	if request.method=='POST':
+		form=ProfileForm(request.POST,instance=user)
+		if form.is_valid():
+			form.save()
+			return redirect('home')
+	context={
+		'form':form,
+		'user':user
+	}
+	return render(request,'profile_info/profile_update.html',context=context)
+
 

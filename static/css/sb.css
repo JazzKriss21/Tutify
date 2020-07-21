@@ -393,7 +393,7 @@ body{
   left: 0;
   background-color: transparent;
   overflow-x: hidden;
-  margin-top: 0px;
+  margin-top: 70px;
   padding-top: 15px;
   font-family: "Poppins", sans-serif;
 
@@ -425,7 +425,7 @@ body{
 .side-nav a {
   font-family: "Poppins",  sans-serif;
   padding: 0;
-  height: 100%;
+  /*height: 100%;*/
   text-decoration: none;
   font-size: 24px;
   color: #fff;
@@ -454,21 +454,20 @@ body{
 */  text-align: left;
 }
 
-.image a{
+.image {
   background:url(no_photo.png) ;
   border-radius:100%;
-   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3); 
+   /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3); */
   background-size:100% 100%;
   padding: 2px;
   height:170px;
   width:170px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left:15px;
   margin-bottom:15px;
   object-fit: scale-down;
 }
 
-.image a:hover{
+.image:hover{
     opacity: 0.7;
     border:  6px transparent; 
 
@@ -587,4 +586,37 @@ body{
 .box{
    border-right: 3px solid #fdc134 ; 
 
+}
+
+table {
+  margin-top: 10px;
+  /*border-left: 5px solid #fdc134;*/
+   /*border-bottom: 5px solid #fdc134;*/
+   border :5px solid #fdc134;
+   padding-right: 10px;
+
+}
+table , td, th {
+  font-size: 10px;
+
+   border-color: solid black;
+   color:white;
+   padding-left: 70px;
+   padding-right: 30px;
+   padding-bottom:10px;
+
+}
+td, th {
+  width: 30px;
+  height: 25px;
+   font-size: 20px;
+}
+
+.verification {
+  color: #333333;
+text-shadow: 2px 2px 0px #FFFFFF, 5px 4px 0px rgba(0,0,0,0.15);
+}
+
+.name {
+  font-size: 25px;
 }

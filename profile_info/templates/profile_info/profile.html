@@ -1,4 +1,5 @@
 <!doctype html>
+{% load friendshiptags %}
 {% load static %}
 <html lang="en">
 
@@ -12,30 +13,204 @@
     <link rel="stylesheet" href="{% static 'css2/fontawsom-all.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"> -->
+
+    <style>
+    .tutor-circle{
+    height:265px;
+    width:265px;
+    border-radius:30px;
+    }
+        .dob{
+        position:relative;
+        top:11px;
+        }
+        .address{
+        position:relative;
+        top:11px;
+        }
+        .age{
+        position:relative;
+        top:13px;
+        }
+        .button{
+        position:relative;
+        top:-12px;
+        background-color:#fdc314;
+        height:10%;
+        }
+        .tut{
+        position:relative;
+        top:8px;
+        }
+        .course{
+        position:relative;
+        top:10px;
+        left:-5px;
+        }
+        .email{
+        position:relative;
+        top:11px;
+        }
+       .email-tutor{
+        position:relative;
+        top:-10px;
+        left:-5px;
+        }
+        .tut-qualification{
+        position:relative;
+        top:-29px;
+        left:-5px;
+        }
+        .tut-qualifi{
+        position:relative;
+        top:-16px;
+        }
+        .tut-subjects{
+        position:relative;
+        top:-48px;
+        left:-5px;
+        }
+        .tut-subj{
+        position:relative;
+        top:-36px;
+        }
+        .tut-available{
+        position:relative;
+        top:-69px;
+        left:-5px;
+        }
+        .tut-avail{
+        position:relative;
+        top:-58px;
+        }
+        .tut-hourly_rate{
+        position:relative;
+        top:-19px;
+        left:-250px;
+        }
+        .tut-hour{
+        position:relative;
+        left:15px;
+        }
+        .tut-verified{
+        position:relative;
+        top:115px;
+        left:-108px;
+        }
+        .tut-verify{
+        position:relative;
+        left:20px;
+        }
+        .tut-city{
+        position:relative;
+        top:190px;
+        right:375px;
+        }
+        .tut-cit{
+        position:relative;
+        left:20px;
+        }
+        .checked{
+        color:#fdc314;
+        }
+   .btn{
+     position:relative;
+     top:15px;
+     }
+     .tut-courses{
+     position:relative;
+     top:15px;
+     }
+     .tut-cities{
+     position:relative;
+     top:-20px;
+     left:245px;
+     }
+     .friends {
+      margin-top:40px;
+     }
+    </style>
 </head>
 
 <body>
+  <header id="header">
+    <div class="d-flex justify-content-sm-center ">
+
+      <div class="logo mr-auto p-2 bd-highlight">
+        <h1 class="text-light"><a href="{% url 'home' %}"><span>|</span> Tutify <span>|</span></a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+
+      
+      <nav class="nav-menu-container">
+        <ul class="nav-menu">
+          <li class="menu-active"><a href="{% url 'home' %}">Home</a></li>
+          <!-- <li class="drop-down"><a href="">Drop Down</a>
+            <ul>
+              <li><a href="#">Drop Down 1</a></li>
+              <li class="drop-down"><a href="#">Drop Down 2</a>
+                <ul>
+                  <li><a href="#">Deep Drop Down 1</a></li>
+                  <li><a href="#">Deep Drop Down 2</a></li>
+                  <li><a href="#">Deep Drop Down 3</a></li>
+                  <li><a href="#">Deep Drop Down 4</a></li>
+                  <li><a href="#">Deep Drop Down 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Drop Down 3</a></li>
+              <li><a href="#">Drop Down 4</a></li>
+              <li><a href="#">Drop Down 5</a></li>
+            </ul>r
+          </li> -->
+          <li><a href="#contact">Contact Us</a></li>
+          <li><a href="#contact"><i class="fa fa-bell"></i></a></li>
+        </ul>
+      <!-- </nav>
+
+      <nav class="nav-menu-container"> -->
+        
+      </nav>
+    </div>
+  </header><!-- End Header -->
+
     <div class="container-fluid overcover">
         <div class="container profile-box">
            <div class="cover-image row">
                <img src="{% static 'img/bloogs-6.jpg' %}" alt="">
            </div>
             <div class="row">
+
                 <div class="col-lg-8 col-md-7 detail-px no-padding">
-                    <a href="{% url 'profile_info:student-profile'  %}" class="btn">&nbsp<i class="fa fa-pencil" aria-hidden="true"></i>&nbsp&nbspEdit&nbsp</a>
-                     {% for prof in users %}
-                        {% if current_user.id == prof.user_id %}
+                    <a href="{% url 'profile_info:update-profile' request.user.username  %}" class="button">
+                      &nbsp<i class="fa fa-pencil" aria-hidden="true"></i>&nbsp&nbspEdit&nbsp</a>
+                      {% if user.user_type == 'student' %}
+                      {% for prof in users %}
+                        {% if user.id == prof.user_id %}
+
                     <h3>About</h3>
                     <p>{{ prof.Bio }}</p>
                 
                     <h3 class="mth3">Student Profile</h3>
+                     <div class="fx-ro">
+
+                        <div class="dat">
+                            Email:
+                        </div>
+                        <div class="detail email">
+                            <b>{{ user.email }}</b>
+
+                        </div>
+                    </div>
                     <div class="fx-ro">
 
                         <div class="dat">
                             Age:
                         </div>
-                        <div class="detail">
-                            <b>{{ prof.Age }}</b>
+                        <div class="detail age">
+                            <b>{{ prof.is_age }}</b>
 
                         </div>
                     </div>
@@ -43,17 +218,8 @@
                         <div class="dat">
                             Date of Birth:
                         </div>
-                        <div class="detail">
+                        <div class="detail dob">
                             <b>{{ prof.Date_of_Birth }}</b>
-
-                        </div>
-                    </div>
-                    <div class="fx-ro">
-                        <div class="dat">
-                           Contact Number:
-                        </div>
-                        <div class="detail">
-                            <b>{{ prof.contact_number }}</b>
 
                         </div>
                     </div>
@@ -61,101 +227,191 @@
                         <div class="dat">
                            Address:
                         </div>
-                        <div class="detail">
+                        <div class="detail address">
                             <b>{{ prof.City }}</b>
 
                         </div>
                     </div>
 
-
-
-                    <h3 class="mth3">Experience</h3>
-                    
-                    <div class="fx-ro">
-                        <div class="dat">
-                            2018
-                        </div>
-                        <div class="detail">
-                            <b>University of California</b>
-                            <p>Los Angels, Calfornia</p>
-                        </div>
-                    </div>
-                    
-                    <div class="fx-ro">
-                        <div class="dat">
-                            2016
-                        </div>
-                        <div class="detail">
-                            <b>Masters Arts Club</b>
-                            <p>Londan United Kingdom</p>
-                        </div>
-                    </div>
-                    
-                    <div class="fx-ro">
-                        <div class="dat">
-                            2011
-                        </div>
-                        <div class="detail">
-                            <b>Abraham High School</b>
-                            <p>Londan United Kingdom</p>
-                        </div>
-                    </div>
-                    
-<!--                    <h3 class="mth3">Expertise</h3>-->
-<!--                    -->
-<!--                    <ul class="exrts">-->
-<!--                        <li>Elementry Sports</li>-->
-<!--                        <li>Football Referee</li>-->
-<!--                        <li>Coaching & Assistant</li>-->
-<!--                        <li>Football Coaching</li>-->
-<!--                        <li>Debate Coaching</li>-->
-<!--                        <li>Debate Assisting</li>-->
-<!--                        <li>Maths Tutor</li>-->
-<!--                        <li>Science Tutor</li>-->
-<!--                        <li>Freedom Speech</li>-->
-<!--                        <li>Wood Workshop</li>-->
-<!--                        <li>Coaching</li>-->
-<!--                        <li>Marathon Race</li>-->
-<!--                    </ul>-->
-<!--                    -->
                 </div>
                 <div class="col-lg-4 col-md-5 leftgh">
                     <div class="img-box">
 
                          <img class="rounded-circle" src="{{ prof.image.url }}" alt="profile_pic">
-                        {% endif %}
-                        {% endfor %}
+
                     </div>
                     <div class="name-det">
                         
                    
                      <h2>{{ user.username }}</h2>
                      
-                     <h3>Contact</h3>
-                     
-                     <p>{{ user.email }}<br>
-                     </p>
-
-                     
-                     <h3>Social Media</h3>
-                     
-                     <p>fb.com/andrewrobertson</p>
-                     <p>twitter@andrewrobertson</p>
-                     <p>instagram@andrewrobertson</p>
-                     <p>pintrest@andrewrobertson</p>
-
-                    <form action="" method="post" enctype="multipart/form-data">
-                         {% csrf_token %}
-
-                         Currently: <a href="{{ user.profile.image.url }}">{{ user.profile.image.url }}</a><br>
-                         <div class="form-group">
-                              <input type="file" name="image" accept="image/*" id="id_image">
-                             <button class="btn btn-outline-info" type="submit">Update</button>
-                         </div>
-                     </form>
 
 
-                     
+
+                    
+                    <h3 class="mth3 friends">Following</h3>
+
+                    <div class="fx-ro">
+                        <div class="dat tut">
+
+                        </div>
+                        <div class="detail">
+                            <p class="course">{% following user %}</p>
+
+                        </div>
+                    </div>
+
+
+
+                        {% endif %}
+                        {% endfor %}
+                        {% else %}
+                   {% for tutor in tutors %}
+                        {% if user.id == tutor.key_id %}
+                         <h3>About</h3>
+                    <p>{{ tutor.bio }}</p>
+
+                    <h3 class="mth3">Tutor Profile</h3>
+                     <div class="fx-ro">
+
+                        <div class="dat email-tutor">
+                            Email:
+                        </div>
+                        <div class="detail">
+                            <b>{{ user.email }}</b>
+
+                        </div>
+                    </div>
+                    <div class="fx-ro">
+
+                        <div class="dat tut-qualification">
+                            Qualification:
+                        </div>
+                        <div class="detail tut-qualifi">
+                            <b>{{ tutor.qualification }}</b>
+                            <div class="detail tut-cities">
+                          <span class="detail tut-city">
+                            City   :  <strong class="detail tut-cit">{{ tutor.location }}</strong>
+                        </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="fx-ro">
+                        <div class="dat tut-subjects">
+                            Subject:
+                        </div>
+                        <div class="detail tut-subj">
+                            <b>{{ tutor.subjects }}</b>
+                            <span class="detail tut-verified">
+                            Verified    :
+                            {% if tutor.verfied == 'yes' %}
+                            <strong class="detail tut-verify">Verified</strong>
+                           {% else %}
+                            <strong class="detail tut-verify">Not Verified</strong>
+                        </span>
+                        {% endif %}
+                        </div>
+                    </div>
+                    <div class="fx-ro">
+                        <div class="dat tut-available">
+                           Available:
+                        </div>
+                        <div class="detail  tut-avail">
+                            {% if tutor.availabilty == 'Both' %}
+                            <b>Online and Offline</b>
+                            {% elif tutor.availabilty == 'online' %}
+                            <b>Online</b>
+                            {% else %}
+                            <b>Offline</b>
+                            {% endif %}
+                        </div>
+                        <span class="detail tut-hourly_rate">
+                            Hourly_rate    :  <strong class="detail tut-hour">{{ tutor.hourly_rate }}</strong>
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-4 col-md-5 leftgh">
+                    <div class="img-box">
+
+                         <img class="rounded-circle tutor-circle" src="{{ tutor.image.url }}" alt="profile_pic">
+
+                    </div>
+                    <div class="name-det">
+
+
+                     <h2>{{ user.username }}</h2>
+                  <div>
+                    
+                  </div>
+                        <!-- <div class="tut-courses">
+                    <h3 class="mth3">Courses</h3>
+
+                    <div class="fx-ro">
+                        <div class="dat tut">
+
+                        </div>
+                        <div class="detail">
+                            <p class="course">C Programming Tutor</p>
+
+                        </div>
+                    </div>
+
+                    <div class="fx-ro">
+                        <div class="dat tut">
+
+                        </div>
+                        <div class="detail">
+                            <p class="course">Java Programming Tutor</p>
+
+                        </div>
+                    </div>
+
+                    <div class="fx-ro">
+                        <div class="dat tut">
+
+                        </div>
+                        <div class="detail">
+                            <p class="course">Theory of Computation</p>
+
+                        </div>
+                    </div>
+                        </div> -->
+
+                    <div>
+                    <h3 class="mth3 friends">Accepted Students</h3>
+                      <div class="fx-ro">
+                        <div class="dat tut">
+                        </div>
+                        <div class="detail">
+                            <p class="course">
+                          {% friends user %}
+                              </p>
+
+                        </div>
+                    </div>
+                    </div>
+                    <div>
+                    <h3 class="mth3 friends">Pending Students</h3>
+                      <div class="fx-ro">
+                        <div class="dat tut">
+                        </div>
+                        <div class="detail">
+                            <p class="course">
+                          {% friend_requests user %}
+                              </p>
+
+                        </div>
+                    </div>
+                    </div>
+                    <div>
+               {% endif %}
+                        {% endfor %}
+                        {% endif %}
+
 <!--                      <h3>Interests</h3>-->
 <!--                      -->
 <!--                      <ul class="hoby row no-margin">-->
@@ -168,7 +424,7 @@
 <!--                        </ul>-->
                         
                     </div>
-                    
+
                    
                      
                 </div>
@@ -184,4 +440,3 @@
 
 
 </html>
-

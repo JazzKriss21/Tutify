@@ -29,6 +29,11 @@ urlpatterns = [
     path('profile/', include("profile_info.urls", namespace="profile_info"),),
     path('dashboard/', include("dashboard.urls", namespace="dashboard"), ),
 
+    path('friendship/', include("friendship.urls")),
+    path('follow/<reciever>', views.follow_view, name='follow'),
+    path('friend_request/<reciever>', views.friend_request_view, name='friend_request'),
+    
+
     #Password resetting urls
     path('password-reset/',auth_views.PasswordResetView.as_view(template_name='accounts/password_reset.html'),name='password_reset'),
     path('password-reset/done/',auth_views.PasswordResetDoneView.as_view(template_name='accounts/password_reset_done.html'),name='password_reset_done'),

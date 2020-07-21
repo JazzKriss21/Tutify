@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'accounts',
     'profile_info',
     'dashboard',
+    'friendship',
 
     'django.contrib.admin',
     'django.contrib.auth',

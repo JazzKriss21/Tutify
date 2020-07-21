@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/hero-img.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/venobox/venobox.css' %}" rel="stylesheet">
+  <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <!-- <link href="assets/css/style.css" rel="stylesheet"> -->
+  <link href="{% static 'css/login.css' %}" rel="stylesheet">
+  <link href="{% static 'css/reset.css' %}" rel="stylesheet">
+
+
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" id="bootstrap-css">
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+	<title>Student Profile</title>
+   <style>
+    .login-html{
+    position:relative;
+    left:550px;
+    top:20px;
+    width:27%;
+    height:670px;
+    }
+   .login-form{
+   width:250px;
+   height:120px;
+   }
+   .div1{
+   position:relative;
+   left:8px;
+   top:10px;
+   }
+   .div2{
+   position:relative;
+   left:8px;
+   top:160px;
+   }
+   .div3{
+   position:relative;
+   left:5px;
+   top:-90px;
+   }
+   .div4{
+   position:relative;
+   top:85px;
+   left:10px;
+   }
+   .div5{
+   position:relative;
+   top:50px;
+   left:80px;
+   }
+  .div6{
+   position:relative;
+   width:55%;
+   left:400px;
+   top:-300px;
+   }
+   input:focus,
+select:focus,
+text:focus,
+button:focus {
+    outline: none;
+}
+textarea:focus{
+outline:none;
+}
+.move{
+position:relative;
+top:10px;
+left:-70px;
+}
+.left{
+position:relative;
+top:20px;
+left:-70px;
+}
+ .error{
+     color:red;
+     }
+   </style>
+</head>
+<body>
+   <header id="header">
+    <div class="d-flex justify-content-sm-center">
+      <div class="logo mr-auto p-2 bd-highlight ">
+        <h1 class="text-light"><a href="{% url 'home' %}"><span>|</span> Tutor&nbsp Search <span>|</span></a></h1>
+      </div>
+      <nav class="nav-menu-container">
+        <ul class="nav-menu container">
+          <li class="menu-active"><a id="home" href="{% url 'home' %}" style="font-size: 20px" ><i class="fas fa-home fa-2x"></i>  </a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <form action="" method="post" enctype="multipart/form-data" id="student-profile">
+    {% csrf_token %}
+
+    <div class="login-html">
+    <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Student Profile</label>
+    <div class="login-form">
+      <div class="sign-in-htm">
+        <span class="error">
+        </span>
+        <div class="group">
+
+<!--          {% for field in form %}-->
+<!--              <p>-->
+<!--                {% for error in field.errors %}-->
+<!--                  <p style="color: red">{{ error }}</p>-->
+<!--                {% endfor %}-->
+<!--              </p>-->
+<!--          {% endfor %}-->
+<!--          {% if form.non_field_errors %}-->
+<!--            <div style="color: red">-->
+<!--              <p>{{form.non_field_errors}}</p>-->
+<!--            </div>-->
+
+<!--          {% endif %}-->
+          <input name="user" required id="id_user" class="input" value ={{user.id}} type="hidden">
+          </div>
+    <div class="group div1">
+ <label for="id_Date_of_Birth" class="label">DOB</label>
+<input type="date" name="Date_of_Birth" class="input width" id="id_Date_of_Birth" value="{{ form.Date_of_Birth.value }}" required>
+     </div>
+    <div class="group div2">
+<label for="id_Bio" class="label">Bio</label>
+      <textarea name="Bio" maxlength="400" class="input wid" id="id_Bio" form="student-profile" content="{{ form.bio.value }}"  required></textarea>
+    </div>
+   <div class="group div3">
+<label for="id_Address" class="label">Location</label>
+     <textarea  name="City" maxlength="400" class="input wid" id="id_Address" form="student-profile" required></textarea>
+    </div>
+
+  <div class="group div5">
+      <label for="id_image" class="label move">Upload Profile Pic:</label>
+       <input type="file" name="image" class="left" accept="image/*" id="id_image" value="Upload Profile_Pic" required>
+
+  </div>
+
+        <div class="group div4">
+          <input type="submit" class="button" value="Submit">
+        </div>
+
+
+      </div>
+    </div>
+
+
+  </form>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'vendor/venobox/venobox.min.js' %}"></script>
+  <script src="{% static 'vendor/aos/aos.js' %}"></script>
+
+  <!-- Template Main JS File -->
+<!--  <script src="assets/js/student_login_registration.js"></script>-->
+
+
+</body>
+</html>
+
+
+
+

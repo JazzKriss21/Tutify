@@ -6,5 +6,5 @@ class TutorFilter(django_filters.FilterSet):
     subjects=CharFilter(field_name='subjects',lookup_expr='icontains')
     class Meta:
         model=TutorProfile
-        fields=['subjects']
+        fields=['subjects','location']
 

@@ -36,14 +36,21 @@
      width:350px;
      border:none;
      }
-    .btn{
+     .search-button{
+     position:relative;
+     left:600px;
+     bottom:91px;
+     width:75px;
+     height:46px;
+     background-color:#fdc134;
+     }
+      .btn{
     position:relative;
     left:600px;
     top:-90px;
     height:45px;
     background-color:#fdc314;
     }
-     }
      input[type=button]{
      border:none;
      }
@@ -52,6 +59,14 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
+
+<!-- <style>
+    body{
+        width:100%;
+        overflow-x:hidden;
+        overflow-y:hidden;
+    }
+</style> -->
 
 <header id="header">
     <div class="d-flex justify-content-sm-center ">
@@ -62,7 +77,7 @@
         <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
       </div>
 
-      
+
       <nav class="nav-menu-container">
         <ul class="nav-menu">
           <li class="menu-active"><a href="{% url 'home' %}">Home</a></li>
@@ -76,15 +91,12 @@
 
   <div class ="header-bg"></div>
   <div class="grid">
- <section class="cont"> 
+ <section class="cont">
   <div class="container">
     <div class="row">
-      <div class="col-lg-3">
+      <div class="col-lg-2">
   <div class="side-nav">
     <div class="image">
-      <a href="index2.html">
-      
-    </a>
     </div>
     <a href="#"><button><i class="fa fa-search" aria-hidden="true"></i>&nbsp&nbsp Find New Tutors</button></a>
     <a href="#"><button><i class="fa fa-users" aria-hidden="true"></i>&nbsp&nbsp My Tutors</button></a>
@@ -95,13 +107,43 @@
 </div >
 <div class="col-lg-9">
    <form class="search" action="/dashboard/resultsearch/" method="get" novalidate="novalidate">
-
+                  {% csrf_token %}
                       <div class="row justify-content-lg-center" data-aos="fade-down">
                            <div>
-                              <input type="text" class="form-control search-location" value="Location" id="exampleFormControlSelect1">
+                                <select class="form-control search-location" id="id_location" name="location">
+            <option disabled selected value>Select</option>
+            <option>Guntur</option>
+            <option>Chennai</option>
+            <option>Mumbai</option>
+              <option>Bangalore</option>
+            <option>Sricity</option>
+            <option>Vijayawada</option>
+               <option>Delhi</option>
+            <option>bapatla</option>
+          </select>
                           </div>
                             <div>
-                              <input type="search" name="subjects" value="{{ filter.qs.value }}" id="id_subjects" class="form-control search-courses" placeholder="Subject/Skill">
+                                <select class="form-control search-courses" id="id_subjects" name="subjects">
+              <option disabled selected value> -- select an option -- </option>
+              <option>Java Programming</option>
+            <option>Web Development</option>
+            <option>Badminton</option>
+              <option>Cricket</option>
+            <option>Guitar</option>
+            <option>Western Dance</option>
+            <option>Drums</option>
+              <option>Gym Workout</option>
+            <option>Football</option>
+            <option>Hindi</option>
+              <option>English</option>
+            <option>Tamil</option>
+            <option>Calculus</option>
+            <option>IT-1</option>
+              <option>IT-22</option>
+            <option>IT-3</option>
+            <option>Classic Dance</option>
+              <option>Machine Learning</option>
+          </select>
                             </div>
 
 
@@ -110,15 +152,14 @@
                           </div>
                       </div>
 
-          </form>
-  <section id="services">
+          </form>  <section id="services">
   <div class="container wow fadeIn">
         <div class="section-header">
           <h2 class="section-title">Categories</h2>
-          
+
         </div>
         <div class="row">
-          <div class="col-lg-4 col-md-4 wow fadeInUp" data-wow-delay="0.2s">
+          <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
             <div class="box">
               <div class="icon"><a href=""><i class="fa fa-music" aria-hidden="true"></i></a></div>
               <h4 class="title"><a href="">Music & Dance</a></h4>

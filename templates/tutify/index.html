@@ -115,26 +115,50 @@
     <section class="search-sec">
     <h2>Find the best tutor for you.</h2>
       <div class="container">
-          <form action="#" method="post" novalidate="novalidate">
+          <form action="/dashboard/resultsearch/" method="get" novalidate="novalidate">
                       <div class="row justify-content-lg-center" data-aos="fade-down">
                            <div class="col-lg-2 col-md-3 col-sm-12 p-0 justify-content-center">
-                              <select class="form-control search-slt" id="exampleFormControlSelect1">
-                                  <option>Location</option>
-                                  <option>Chennai</option>
-                                  <option>Bangalore</option>
-                                  <option>Hyderabad</option>
-                                  <option>Delhi</option>
-                                  <option>Mumbai</option>
-                                  <option>Kolkata</option>
+                              <select class="form-control search-slt" id="exampleFormControlSelect1" name="location">
+                                    <option disabled selected value> select</option>
+
+                                  <option>Guntur</option>
+            <option>Chennai</option>
+            <option>Mumbai</option>
+              <option>Bangalore</option>
+            <option>Sricity</option>
+            <option>Vijayawada</option>
+               <option>Delhi</option>
+            <option>bapatla</option>
                               </select>
                           </div>  
                             <div class="col-lg-6 col-md-3 col-sm-12 p-0">
-                              <input type="text" class="form-control search-slt" placeholder="Subject/Skill">
+                                <select class="form-control search-slt" id="id_subjects" name="subjects">
+                                      <option disabled selected value> -- select an option -- </option>
+
+                                     <option>Java Programming</option>
+                                    <option>Web Development</option>
+                                    <option>Badminton</option>
+                                      <option>Cricket</option>
+                                    <option>Guitar</option>
+                                    <option>Western Dance</option>
+                                    <option>Drums</option>
+                                      <option>Gym Workout</option>
+                                    <option>Football</option>
+                                    <option>Hindi</option>
+                                      <option>English</option>
+                                    <option>Tamil</option>
+                                    <option>Calculus</option>
+                                    <option>IT-1</option>
+                                      <option>IT-22</option>
+                                    <option>IT-3</option>
+                                    <option>Classic Dance</option>
+                                      <option>Machine Learning</option>
+                                </select>
                             </div>
 
 
                           <div class="col-lg-1 col-md-3 col-sm-12 p-0">
-                              <button type="button" class="btn btn-primary bg-yellow wrn-btn ">Search</button>
+                              <button type="submit" class="btn btn-primary bg-yellow wrn-btn ">Search</button>
                           </div>
                       </div>
              
@@ -153,7 +177,7 @@
       <div class="col-md-12 col-lg-6 padding-0 card" data-aos="fade-up">
         <img class="card-img" src="{% static 'img/student.jpg' %}" alt="" >
         <div class="card-img-overlay d-flex align-items-center justify-content-center flex-column">
-            <a href="#" class="btn-get-started scrollto">I Want To Learn</a>
+            <a href="{% url 'dashboard:student_dashboard' %}" class="btn-get-started scrollto">I Want To Learn</a>
         </div>
       </div>
     </div>
